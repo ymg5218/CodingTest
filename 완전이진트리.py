@@ -19,12 +19,12 @@ def inorder():
     else:
         root_index = len(arr) // 2
         print(arr[root_index]) # 루트노드 출력
-        arr[root_index] = -1 # -1로 출력되었음을 알림
+        arr[root_index] = -1 # -1로 출력되었음을 알림  ---- > -1은 나중에 출력되지 않도록 걸러질 것
         parent_index = len(arr) # 부모 레벨 인덱스를 담을 변수
-        for i in range(1,K-1): # 높이는 K, 루트노드는 수행했으니 횟수 - 1
+        for i in range(1,K-1): # 높이는 K, 루트노드는 수행했으니 1부터 시작, 리프노드는 수행하지 않으므로 K-2까지
             parent_index //= 2 # 부모 레벨 인덱스
             child_index = parent_index // 2 # 자식 레벨 인덱스
-            nodes = ""
+            nodes = "" # 해당 레벨의 노드를 담을 문자열 선언
             while(True):
                 if child_index >= len(arr):
                     break
@@ -34,7 +34,7 @@ def inorder():
                     child_index += parent_index
             print(nodes)
                 
-        leaf = ""# 리프노드 담을 배열 선언
+        leaf = ""# 리프노드 담을 문자열 선언
         for val in arr:
             if val != -1:
                 leaf += str(val) + " "
@@ -44,5 +44,5 @@ def inorder():
 if __name__ == "__main__":
     K = int(input())
     arr = list(map(int, input().split())) # 상근이가 방문한 빌딩 순서대로 입력
-    arr.insert(0,-1) # 더미값 입력
+    arr.insert(0,-1) # 더미값 입력 -> 트리의 인덱스를 1부터 시작하기 위함
     inorder() # play 함수 실행, return된 cnt값 확인
