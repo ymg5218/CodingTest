@@ -11,8 +11,6 @@
 
 # 중위순회를 뜻함
 
-import math
-
 def inorder():
     if len(arr) <= 1:
         print(str(arr[0]))
