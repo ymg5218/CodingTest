@@ -23,8 +23,7 @@ def query_dfs(start): # 깊이우선탐색을 이용하여 각 노드의 자식�
     for node in tree[start]: # start번째 노드와 연결된 node들 탐색
         if not visited[node]: # 탐색하지 않은 노드 : 자식노드
             query_dfs(node) # 자식노드들 탐색 - 재귀호출
-            countNode[start] += countNode[node] # 자식노드가 더 없으면 부모노드에
-            print(countNode)
+            countNode[start] += countNode[node] # 자식노드가 더 없으면 부모노드에 합산하는 식
     
 
 if __name__ == "__main__":
