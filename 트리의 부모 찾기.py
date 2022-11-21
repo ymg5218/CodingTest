@@ -1,7 +1,7 @@
 # 11725
 
 import sys
-sys.setrecursionlimit(10**9) # 최대 재귀호출(10만) 횟수 증가
+sys.setrecursionlimit(10**9) # 최대 재귀호출(10만) 횟수 증가 
     # 처음 시도한 함수는 2중for문으로 인한 시간복잡도 n^2으로 시간초과
     # 해결 : 깊이우선탐색 DFS
     # 참고사이트 : https://pythontoomuchinformation.tistory.com/506

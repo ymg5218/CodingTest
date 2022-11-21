@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # python
 # 로또만들기
 # 같은 숫자 출력 불가능
@@ -19,7 +17,6 @@ for n in range(0,num):
         
 
     print(list)
-=======
 # python
 # 로또만들기
 # 같은 숫자 출력 불가능
@@ -39,8 +36,6 @@ for n in range(0,num):
         
 
     print(list)
->>>>>>> 7deb61f781ed836e8e4443628b466580998ac552
-=======
 # python
 # 로또만들기
 # 같은 숫자 출력 불가능
@@ -60,4 +55,3 @@ for n in range(0,num):
         
 
     print(list)
->>>>>>> 7deb61f781ed836e8e4443628b466580998ac552
