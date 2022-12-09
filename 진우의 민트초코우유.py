@@ -38,7 +38,7 @@ def dfs(start):
             dfs(start + 1) # 다음 방문
             # 4. 만약 돌아올 수 없으면 마지막으로 먹은 민초우유의 위치로 backtracking
             visited[i] = False # 가봤는데 에바면 도르마무
-            fuck_seq.pop() # 기록도 도르마무          
+            fuck_seq.pop() # 기록도 도르마무
             
 
 def count(fuck_seq): # 민초우유 몇개 먹을 수 있나 세보자
