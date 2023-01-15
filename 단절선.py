@@ -1,7 +1,9 @@
 #11400
+
 import sys
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
+
 def dfs(start, parent):
     global cnt
     cnt += 1
@@ -24,7 +26,7 @@ def dfs(start, parent):
         """판별 방법"""
         # 서브트리의 dfs 반환 값(주변 최소 순번)이 부모 노드의 순번보다 크다 : 브릿지
         if subtree > order[start] :
-            bridge.append([start,childNode])
+            bridge.append((start,childNode))
     
     return lsv # 주변 최소 순번을 return
 
@@ -58,11 +60,9 @@ if __name__ == "__main__":
     
     # 모든 간선의 양 끝점은 [작은수 노드, 큰 수 노드] 로 통일시키기 위해 정렬을 진행
     # 이는 간선의 양 끝점을 입력받아 브릿지 여부 판단할 때, 데이터의 정렬을 통일시켜 브릿지인지 판단하기 용이하기 위함.
-    for i in range(0,len(bridge)):
-        bridge[i].sort()
     
+    bridge.sort()
     print(len(bridge))
-    if len(bridge) > 0:
-        for line in bridge:
-            print(line)
+    for x,y in bridge:
+        print(x,y)
     

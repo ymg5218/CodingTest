@@ -49,7 +49,7 @@ if __name__ == "__main__":
             road[start].append((end,cost))
         
 
-    dijkstra(0)\
+    dijkstra(0)
     print(distance[D])
     
         
