@@ -1,6 +1,6 @@
 # 1612
 
-# 비슷한 문제 : https://www.acmicpc.net/problem/4375  -> 백준 4375
+# 비슷한 문제 : https://www.acmicpc.net/problem/4375   -> 백준 4375
 
 '''
  1 => 1,11,111,1111 ...
