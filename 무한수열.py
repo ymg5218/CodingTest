@@ -27,13 +27,14 @@ else:
 """
 
 # N이 최대 10^12이기 때문 dp를 활용해 시간복잡도를 줄여야 함
+# 최악의 경우 N = 10^12 , P,Q = 2
 
 
 def dp(N):
     if N in graph: # 만약 graph[N]을 이미 구했던 적이 있어, 그래프에 저장되어 있다면,
         return graph[N] # 계산 필요없이 바로 return
     else: # graph[N]을 구한 적이 없어, 그래프에 저장되어 있지 않다면,
-        graph[N] = dp(N//P) + dp(N//Q) # 재귀 시작
+        graph[N] = dp(N//P) + dp(N//Q) # 재귀를 돌려 graph(N) 구한 후, graph에 저장
         return graph[N]
 
 
@@ -43,8 +44,6 @@ graph[0] = 1 # A0 = 1
 N,P,Q = map(int,input().split())
 
 print(dp(N))
-
-
 
 
 
