@@ -26,7 +26,7 @@ def dfs(start, parent):
         """판별 방법"""
         # 서브트리의 dfs 반환 값(주변 최소 순번)이 부모 노드의 순번보다 크다 : 브릿지
         if subtree > order[start] :
-            bridge.append((start,childNode))
+            bridge.add(tuple(sorted([start,childNode])))
     
     return lsv # 주변 최소 순번을 return
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     
     #graph를 출력하면 인접리스트의 형태로 저장되었음을 알 수 있다.
     
-    bridge = [] # 브릿지를 담을 배열 선언
+    bridge = set() # 브릿지를 담을 튜플 선언
 
     cnt = 0 # 노드 방문 순서를 나타내는 변수
     
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # 모든 간선의 양 끝점은 [작은수 노드, 큰 수 노드] 로 통일시키기 위해 정렬을 진행
     # 이는 간선의 양 끝점을 입력받아 브릿지 여부 판단할 때, 데이터의 정렬을 통일시켜 브릿지인지 판단하기 용이하기 위함.
     
-    bridge.sort()
+    bridge = sorted(bridge, key=lambda x : (x[0], x[1]))
     print(len(bridge))
     for x,y in bridge:
         print(x,y)
