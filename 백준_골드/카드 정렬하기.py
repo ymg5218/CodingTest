@@ -10,7 +10,7 @@ for _ in range(N):
     heappush(heap,int(input()))
 
 if N == 1:
-    print(heappop(heap))
+    print(0)
     exit()
 
 sum = heappop(heap) + heappop(heap)
