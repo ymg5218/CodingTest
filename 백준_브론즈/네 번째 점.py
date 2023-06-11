@@ -1,5 +1,4 @@
 # 3009
-import math
 
 x = {}
 y = {}
@@ -21,9 +20,4 @@ result_x = [k for k,v in x.items() if v == 1]
 result_y = [k for k,v in y.items() if v == 1]
 
 print(result_x[0], result_y[0])
-
-
-
-    
-
 
