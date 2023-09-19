@@ -97,8 +97,8 @@ def solution():
             
 
 # 게임종료 조건을 확인하는 메소드
-def isGameOver(snack, head):
-    if head in snack:
+def isGameOver(snake, head):
+    if head in snake:
         return True
     elif head[0] >= N or head[0] < 0 or head[1] >= N or head[1] < 0:
         return True
