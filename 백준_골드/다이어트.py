@@ -9,10 +9,6 @@ def isValid(x, y):
     b = (y - x) / 2
     a = x + b
 
-    # 몸무게가 0인 경우는 없음.
-    if a == 0 or b == 0:
-        return -1
-    
     # a가 정수형으로 떨어지는 경우에만 a 를 return
     if int(a) == a:
         return int(a)
@@ -27,10 +23,12 @@ def solution():
     # 답을 담을 배열
     result = []
 
-    while left_point <= right_point:
+    while True:
         if G % arr[left_point] == 0:
             right_point = (G // arr[left_point]) - 1
-            if right_point < left_point:
+
+            # right_point가 left_point보다 작거나 같으면 반복문 종료
+            if right_point <= left_point:
                 break
             
             current_weight = isValid(arr[left_point], arr[right_point])
