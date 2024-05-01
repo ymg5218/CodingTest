@@ -11,7 +11,7 @@ def solution():
     dp[0][2] = blue[0]
 
     for idx in range(1, N):
-        # ex) 빨간색을 마지막으로 칠했을 때의 최솟값 : min(dp[idx - 1][빨간색이 아닌 경우의 값] + 빨간색으로 칠하는 비용)
+        # ex) 빨간색을 마지막으로 칠했을 때의 최솟값 : min(dp[idx - 1][빨간색이 아닌 경우의 값]) + 빨간색으로 칠하는 비용
         for color in range(3):
             if color == 0:
                 dp[idx][color] = min(dp[idx - 1][(color + 1) % 3], dp[idx - 1][(color + 2) % 3]) + red[idx]
