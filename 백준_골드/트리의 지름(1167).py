@@ -5,10 +5,13 @@ sys.setrecursionlimit = 10**8
 
 def dfs(visited, now_v, length):
     global max_length
+    global far_vertex
     if visited[now_v]:
         return
     visited[now_v] = True
-    max_length = max(max_length, length)
+    if max_length < length:
+        max_length = length
+        far_vertex = now_v
     for next_v in graph[now_v]:
         if not visited[next_v[0]]:
             dfs(visited, next_v[0], length + next_v[1])
@@ -16,10 +19,17 @@ def dfs(visited, now_v, length):
 
 def solution():
     global max_length
+    global far_vertex
     max_length = 0
-    for i in range(1, V + 1):
-        visited = [False] * (V + 1)
-        dfs(visited, i, 0)
+    far_vertex = -1
+    # 1번 정점에서 가장 먼 정점 알아내기
+    visited = [False] * (V + 1)
+    dfs(visited, 1, 0)
+    
+    max_length = 0
+    # 가장 먼 정점에서 가장 먼 정점까지의 거리 = 지름
+    visited = [False] * (V + 1)
+    dfs(visited, far_vertex, 0)
     
     print(max_length)
 
