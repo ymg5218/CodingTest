@@ -2,7 +2,7 @@ def isValid(i):
     for j in range(i):
         if col[i] == col[j] or abs(col[i] - col[j]) == abs(i - j):
             return False
-    
+
     return True
 
 def back_tracking(n):
@@ -15,8 +15,6 @@ def back_tracking(n):
         col[n] = i
         if isValid(n):
             back_tracking(n + 1)
-
-
 
 
 T = int(input())
