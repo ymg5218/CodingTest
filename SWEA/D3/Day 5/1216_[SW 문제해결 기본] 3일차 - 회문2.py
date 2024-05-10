@@ -34,7 +34,7 @@ def solution():
                     if isValid(temp):
                         now_maxLen = search_len
             length = max(length, now_maxLen)
-        # length가 최대 값인 100이라면 함수 종료
+        # length가 최대 값이라면 함수 종료
         if length == L:
             return length
 
@@ -45,7 +45,7 @@ def solution():
             for search_len in range(length + 1, L - row + 1):
                 if board[row][col] == board[row + search_len - 1][col]:
                     temp = []
-                    for _row in range(col, search_len + col):
+                    for _row in range(row, search_len + row):
                         temp.append(board[_row][col])
                     if isValid(temp):
                         now_maxLen = search_len
@@ -59,10 +59,10 @@ T = 10
 
 for _ in range(T):
     test_case = int(input())
-
+    L = 100
     board = []
-    for _ in range(8):
+    for _ in range(L):
         board.append(input())
     
-    L = 8
+    
     print(f'#{test_case} {solution()}')
