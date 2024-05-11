@@ -1,9 +1,11 @@
 from collections import deque
 
+
 def solution():
     arr = list(map(int, input().split()))
     queue = deque(sorted(arr))
 
+    # 마지막 손님이 오는 시간(종료 조건으로 사용)
     last = queue[-1]
     # 현재 붕어빵 개수
     fish_bread = 0
