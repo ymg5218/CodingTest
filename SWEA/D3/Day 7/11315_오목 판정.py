@@ -24,7 +24,7 @@ def solution():
                         return "YES"
     
     return "NO"
-                    
+                
 
 T = int(input())
 
