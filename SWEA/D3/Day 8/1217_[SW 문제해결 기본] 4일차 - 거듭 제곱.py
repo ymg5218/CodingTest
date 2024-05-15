@@ -16,3 +16,4 @@ for _ in range(T):
     print(f'#{test_case}', end=" ")
     power(A, 1)
     print(f'{result}')
+
