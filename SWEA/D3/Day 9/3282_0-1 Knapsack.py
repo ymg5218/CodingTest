@@ -2,13 +2,12 @@
 def solution():
     for row in range(1, N + 1):
         for col in range(1, K + 1):
-            # 가방 한계 무게보다 현재 물건의 무게가 크면 어떤 경우든 넣지 못함
+            # 가방 한계 부피보다 현재 물건의 부피가 크면 어떤 경우든 넣지 못함
             if col < v[row]:
                 dp[row][col] = dp[row - 1][col]
             else:
                 dp[row][col] = max(dp[row - 1][col], dp[row - 1][col - v[row]] + c[row])
 
-    print(dp)
     return dp[N][K]
 
 T = int(input())
