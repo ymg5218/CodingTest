@@ -8,23 +8,22 @@ input = sys.stdin.readline
 def dijkstra(start_v):
     distance[start_v] = 0
 
-    priority_queue = []
+    hq = []
 
-    for next_v in graph[start_v]:
-        heapq.heappush(priority_queue, next_v)
-        distance[next_v[1]] = min(next_v[0], distance[next_v[1]])
+    heapq.heappush(hq, [0, start_v])
 
-    while priority_queue:
-        cost, now_v = heapq.heappop(priority_queue)
+    while hq:
+        now_dis, now_v = heapq.heappop(hq)
 
         # 가지치기
-        if cost > distance[now_v]:
+        if now_dis > distance[now_v]:
             continue
 
         for next_v in graph[now_v]:
-            if next_v[0] + distance[now_v] < distance[next_v[1]]:
+            cost = next_v[0] + distance[now_v]
+            if cost < distance[next_v[1]]:
                 distance[next_v[1]] = next_v[0] + distance[now_v]
-                heapq.heappush(priority_queue, next_v)
+                heapq.heappush(hq, [cost, next_v[1]])
 
 
 if __name__ == "__main__":
