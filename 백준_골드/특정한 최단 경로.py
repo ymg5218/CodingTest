@@ -24,7 +24,7 @@ def dijkstra(start_v):
 
 
 if __name__ == "__main__":
-    INF = 9876543210
+    INF = 1000 * 200000 + 1
     
     N, E = map(int, input().split())
     
@@ -37,40 +37,37 @@ if __name__ == "__main__":
 
     v1, v2 = map(int, input().split())
 
-    min_dis = [9876543210, 9876543210]
+    # 1 -> v1 -> v2 -> N // 1 -> v2 -> v1 -> N
+    min_dis = [1000 * 200000 + 1, 1000 * 200000 + 1]
 
-    # 1 -> v1
+    # 1 -> v1, 1 -> v2
     distance = [INF] * (N + 1)
     distance[1] = 0
     dijkstra(1)
 
-    if min_dis == INF:
+    if distance[v1] == INF or distance[v2] == INF or distance[N] == INF:
         print(-1)
         exit(0)
     
-    # 1 -> v2
-    
+    min_dis[0] = distance[v1]
+    min_dis[1] = distance[v2]
 
-    # v1 -> v2, 
+    # v1 -> v2, v2 -> v1 
     distance = [INF] * (N + 1)
-    
-    distance[point_1] = min_dis
-    dijkstra(point_1)
+    distance[v1] = 0
+    dijkstra(v1)
 
-    if distance[point_2] == INF:
-        print(-1)
-        exit(0)
+    min_dis[0] += distance[v2]
+    min_dis[1] += distance[v2]
 
-    min_dis += distance[point_2]
+    # v1 -> N
+    min_dis[1] += distance[N]
 
-    # v1 or v2 -> N
+    # v2 -> N
     distance = [INF] * (N + 1)
-    dijkstra(point_2)
-
-    if distance[N] == INF:
-        print(-1)
-        exit(0)
+    distance[v2] = 0
+    dijkstra(v2)
     
-    min_dis += distance[N]
+    min_dis[0] += distance[N]
 
-    print(min_dis)
+    print(min(min_dis))
