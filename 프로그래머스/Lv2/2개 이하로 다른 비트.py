@@ -22,15 +22,21 @@ def solution(numbers):
         while True:
             diff = 0
             next_binary, next_length = binary_bit(next)
-            if now_length != next_length:
-                diff += 1
+
+            digit_gap = next_length - now_length
+
+            if digit_gap > 0:
+                diff += digit_gap
+
             for i in range(now_length):
-                if now_binary[i] != next_binary[i]:
+                if now_binary[i] != next_binary[i + digit_gap]:
                     diff += 1
                 if diff > 2:
-                    break
+                    next += 1
+                    continue
             if diff <= 2:
                 answer.append(next)
+                break
             next += 1
 
     return answer
