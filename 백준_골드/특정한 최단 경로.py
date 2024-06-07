@@ -38,7 +38,7 @@ if __name__ == "__main__":
     v1, v2 = map(int, input().split())
 
     # 1 -> v1 -> v2 -> N // 1 -> v2 -> v1 -> N
-    min_dis = [1000 * 200000 + 1, 1000 * 200000 + 1]
+    min_dis = [INF, INF]
 
     # 1 -> v1, 1 -> v2
     distance = [INF] * (N + 1)
