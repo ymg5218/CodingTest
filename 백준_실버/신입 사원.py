@@ -15,7 +15,7 @@ def solution():
 
 
 if __name__ == "__main__":
-    T = int(input())    
+    T = int(input())
     apps = []
     for _ in range(T):
         apps.clear()

@@ -32,6 +32,7 @@ def seq_3(belt,robot): # 3. 로봇 적재
     robot[0] = "True" # 로봇 올리는 위치는 True로 변환
     belt[0] -= 1 # 로봇 올리는 위치의 내구도는 1 감소 시킴
     return belt,robot
+
 def is_stop(belt):
     global N,K
     if(belt.count(0) >= K):
