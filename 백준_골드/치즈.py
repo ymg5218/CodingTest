@@ -5,7 +5,7 @@ from collections import deque
 
 input = sys.stdin.readline
 
-# 
+# 해당 칸이 외부공기인지 확인하는 메소드
 def isValid(row, col, visited):
     if 0 <= row < N and 0 <= col < M:
         if not visited[row][col] and board[row][col] == 0:
@@ -38,7 +38,7 @@ def bfs(row, col, visited):
 
 def solution():
     global cnt
-    day = 0
+    time = 0
 
     # 동, 남, 서, 북
     d_row = [0, 1, 0, -1]
@@ -66,9 +66,9 @@ def solution():
             board[melt[0]][melt[1]] = 0
             cnt -= 1
         
-        day += 1
+        time += 1
 
-    return day
+    return time
 
 if __name__ == "__main__":
     N, M = map(int, input().split())
