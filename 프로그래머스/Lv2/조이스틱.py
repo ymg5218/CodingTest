@@ -5,43 +5,29 @@ def now_alpha(target):
 
 def solution(name):
     answer = 0
-    answer += now_alpha(name[0])
     length = len(name)
 
-    longest_A = 0
-    longest_point = []
-    now_A_len = 0
-    start = 0
-    now_idx = 1
-    while now_idx < length:
-        answer += now_alpha(name[now_idx])
-        if name[now_idx] == "A":
-            if now_A_len == 0:
-                start = now_idx
-            now_A_len += 1
+    # 연속된 A의 시작점 왼쪽 인덱스
+    left = 0
+    
+    move = length - 1
 
-            if now_idx == length - 1:
-                if longest_A < now_A_len:
-                    longest_point = [start, now_idx - 1]
-                    longest_A = now_A_len
+    while left < length:
+        # left를 한 칸씩 옮기며 탐색하니, 탐색하는 김에 상/하 조작 회수 카운트
+        answer += now_alpha(name[left])
+        # 연속된 A의 끝점 오른쪽 인덱스
+        right = left + 1
+        while right < length and name[right] == "A":
+            right += 1
 
-        else:
-            if now_A_len > 0:
-                if longest_A < now_A_len:
-                    longest_point = [start, now_idx - 1]
-                    longest_A = now_A_len
-                    now_A_len = 0
+        # 현재 연속된 A 문자열을 피하면서, 나머지 문자들을 탐색하는 최소한의 횟수
+        move = min(move, left * 2 + length - right, (length - right) * 2 + left)
+        left = right
 
-        now_idx += 1
-
-    if longest_point:
-        answer += min(length - 1, (longest_point[0] - 1) * 2 + (length - longest_point[1] - 1), ((length - longest_point[1] - 1) * 2) - 1 + longest_point[0])
-    else:
-        answer += (length - 1)
+    answer += move
 
     return answer
 
 if __name__ == "__main__":
-    name = "AAAABBAAAA"
-
+    name = "AAABBBAAAA"
     print(solution(name))
