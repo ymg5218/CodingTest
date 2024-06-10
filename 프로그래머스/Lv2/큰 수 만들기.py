@@ -1,18 +1,17 @@
 def solution(number, k):
-    num_list = list(number)
+    stack = []
+    for i in range(len(number)):
+        while stack and k > 0 and stack[-1] < number[i]:
+            stack.pop()
+            k -= 1
+
+        stack.append(number[i])
 
     while k > 0:
-        remove_set = {}
-        for i in range(1, len(num_list) - 1):
-            if num_list[i - 1] < num_list[i]:
-                remove_set[i - 1] = True
-                k -= 1
+        stack.pop()
+        k -= 1
 
-       
-    
-    answer = "".join(num_list)
-
-    return answer
+    return "".join(stack)
 
 if __name__ == "__main__":
     number = "4177252841"
