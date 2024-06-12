@@ -17,7 +17,8 @@ def solution(people,limit):
     return answer
 
 if __name__ == "__main__":
-    people = [70, 50, 80, 50]
+    people = [40, 40, 20, 80, 40, 70, 90]
+
     limit = 100
 
     print(solution(people, limit))
