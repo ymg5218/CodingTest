@@ -21,13 +21,12 @@ def solution():
         result[0] -= 10**digit
 
         # 만약 자리수가 10^0의 자리가 아니라면
-        if digit == len(N) - 1:
-            result[int(now)]+=(int(''.join(N[-digit:]))+1)
+        if digit > 0:
+            # 현재 자리수의 숫자 now
+            result[ int(now) ] + (int(''.join(N[-digit:]))+1)
         # 현재 자리수가 10^0이라면 그냥 자기자신이 1의 자리로 오는 한 가지 경우밖에 없으니 1 더함
-        elif digit > 0:
-            result[int(now)]+=(10**digit)
         else:
-            result[int(now)]+=1
+            result[ int(now) ] += 1
 
         digit -= 1
 
