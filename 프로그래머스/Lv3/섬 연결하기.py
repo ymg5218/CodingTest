@@ -1,39 +1,47 @@
-def dfs(graph, visited, now_v, sum, visited_cnt):
-    global answer
+def find_parent(x):
+    global parents
 
-    if len(visited) == visited_cnt:
-        answer = min(answer, sum)
-        return
+    # 루트노드 갱신
+    if parents[x] != x:
+        parents[x] = find_parent(parents[x])
+    return parents[x]
 
-    for next_v, cost in graph[now_v]:
-        if not visited[next_v]:
-            visited[next_v] = True
-            dfs(graph, visited, next_v, sum + cost, visited_cnt + 1)
-            visited[next_v] = False
-            visited_cnt -= 1
+def union_parent(x, y):
+    global parents
 
+    x = find_parent(x)
+    y = find_parent(y)
+
+    if x < y:
+        parents[y] = x
+    else:
+        parents[x] = y
 
 def solution(n ,costs):
-    global answer
-    # n = 100 기준, 간선의 최대 길이 * 간선의 최대 개수 + 1
-    INF = ((99 * 100) // 2) ** 2 + 1
+    global parents
 
-    answer = INF
+    answer = 0
 
-    graph = [[] for _ in range(n)]
-    for c in costs:
-        graph[c[0]].append([c[1], c[2]])
-        graph[c[1]].append([c[0], c[2]])
+    # 비용 기준 오름차순 정렬
+    costs.sort(key = lambda x:x[2])
 
-    for start_v in range(n):
-        visited = [False] * n
-        visited[start_v] = True
-        dfs(graph, visited, start_v, 0, 1)
+    # 크루스칼로 MST찾기
+    # 부모 노드 저장 배열
+    parents = [i for i in range(n)]
 
+    for x, y, cost in costs:
+        if find_parent(x) != find_parent(y):
+            # x, y의 부모노드들 갱신
+            union_parent(x, y)
+
+            # x, y 노드와 연결된 모든 노드들의 부모노드 갱신
+            union_parent(x, y)
+
+            answer += cost
     return answer
 
 
 if __name__ == "__main__":
-    n = 4
-    costs = [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]
+    n = 5
+    costs = [[0, 1, 1], [2, 3, 1], [3, 1, 3], [4, 0, 5], [4, 2, 4]]
     print(solution(n, costs))
