@@ -1,4 +1,4 @@
-# CodingTest_Python
-pyTest
+# CodingTest
+Python && Javascript
 || 시작일 : 22/11/10 ||
-목적 : 파이썬 코딩테스트 결과물, 자발적인 첫 깃허브 ||
+목적 : 코딩테스트 결과물 ||
