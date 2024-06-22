@@ -51,23 +51,23 @@ def solution(numbers):
     answer = len(combi_nums)
     if answer == 0:
         return answer
-
-    # 소수 판별 -> 에라토스테네스의 체
-    # 시간복잡도 O(NlglgN) N 최대 9999999 ~> 4,000,000
-    for n in range(2, int(largest**0.5) + 1):
-        mul_op = 2
-        now_num = n * mul_op
-        while now_num <= largest:
-            if answer == 0:
-                return answer
-            
-            if now_num in combi_nums:
-                combi_nums.remove(now_num)
-                answer -= 1
-            mul_op += 1
-            now_num = n * mul_op
-
+    
+    #소수 찾기
+    nums = list(combi_nums)
+    for num in nums:
+        # 2는 소수임
+        if num == 2:
+            continue
+        for n in range(2, int(largest**0.5) + 1):
+            # 소수가 아님을 확인
+            if n != num:
+                if num % n == 0:
+                    answer -= 1
+                    break
+        
     return answer
+
+
 
 if __name__ == "__main__":
     numbers = "9876543"
