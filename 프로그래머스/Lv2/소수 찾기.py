@@ -1,17 +1,14 @@
 def back_tracking(now, used, used_cnt, length):
     global combi_nums
     global arr
-    global largest
     # 조합 가능한 수 추가
     if now != "" and now not in combi_nums:
         # 2는 소수임
         if int(now) == 2:
             combi_nums.add(int(now))
-            largest = max(largest, int(now))
         # 짝수이거나 1이면 애초에 넣지 않음
         elif int(now) % 2 != 0 and now != "1":
             combi_nums.add(int(now))
-            largest = max(largest, int(now))
     if length == used_cnt:
         return
     
@@ -27,13 +24,9 @@ def back_tracking(now, used, used_cnt, length):
 def solution(numbers):
     global combi_nums
     global arr
-    global largest
 
     arr = list(numbers)
     length = len(arr)
-
-    # 조합 가능한 수 중 가장 큰 수를 담을 변수
-    largest = 0
 
     # 조합 가능한 모든 수
     combi_nums = set()
@@ -58,7 +51,7 @@ def solution(numbers):
         # 2는 소수임
         if num == 2:
             continue
-        for n in range(2, int(largest**0.5) + 1):
+        for n in range(2, int(num**0.5) + 1):
             # 소수가 아님을 확인
             if n != num:
                 if num % n == 0:
