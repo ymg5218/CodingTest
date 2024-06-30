@@ -11,6 +11,12 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "js 디버깅",
+            "program": "${file}"
         }
     ]
 }
