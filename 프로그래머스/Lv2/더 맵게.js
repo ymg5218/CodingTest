@@ -13,15 +13,15 @@ class MinHeap {
         // 0번째 인덱스는 더미 인덱스
         this.hq = [null];
     }
-
+    // 힙의 사이즈를 return
     size() {
         return this.hq.length - 1;
     }
-
+    // x 노드와 y 노드를 서로 바꿈
     swap(x, y) {
         [this.hq[x], this.hq[y]] = [this.hq[y], this.hq[x]];
     }
-
+    // 최소값을 return
     peek() {
         return this.hq[1];
     }
