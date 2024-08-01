@@ -2,11 +2,14 @@
 import sys
 input = sys.stdin.readline
 
+a = list(map(int, input().split()))
+
 def solution():
     cnt = 0
     # 각 음계의 어느 프렛에 손가락이 올라가있는지 확인하기 위한 6개의 스택 선언
     # 0번째 스택은 더미 스택
     stack = [[] for _ in range(7)]
+
 
     for idx in range(N):
         now_level, now_fret = melody[idx]
