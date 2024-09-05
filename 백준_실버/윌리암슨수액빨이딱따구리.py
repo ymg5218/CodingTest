@@ -1,42 +1,50 @@
 # 17129
 
-# 격자판에서의 탐색 풀이 참고 : https://tooo1.tistory.com/453
-# deque 첨써봄. 참고 : https://dongdongfather.tistory.com/72
-
-
-
 import sys
 from collections import deque
-
 input = sys.stdin.readline
 
-N,M = map(int,input().split())
+def bfs(start_row, start_col):
+    queue = deque()
+    # 동 남 서 북
+    d_row = [0, 1, 0, -1]
+    d_col = [1, 0, -1, 0]
 
-arr = [list(map(int, input().strip())) for _ in range(N)]
-visited = [[0]*M for _ in range(N)]
-q = deque()
-dx = [0,0,-1,1]
-dy = [1,-1,0,0]
+    queue.append([start_row, start_col])
+    board[start_row][start_col] = "1"
 
-def bfs(x,y):
-    global ans
-    q.append([x,y])
-    visited[x][y]+=1
-    while q:
-        x, y = q.popleft()
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if 0<=nx<N and 0<=ny<M and arr[nx][ny] != 1 and not visited[nx][ny]:
-                    q.append([nx,ny])
-                    visited[nx][ny]= visited[x][y] +1
-                    if arr[nx][ny] in (3,4,5):
-                        print('TAK')
-                        print(visited[x][y])
-                        exit()
-    print('NIE')
+    distance = 1
+    while queue:
+        for _ in range(len(queue)):
+            now_row, now_col = queue.popleft()
+            for i in range(4):
+                next_row, next_col = now_row + d_row[i], now_col + d_col[i]
+                if 0 <= next_row < n and 0 <= next_col < m and board[next_row][next_col] != "1":
+                    if board[next_row][next_col] in ("3", "4", "5"):
+                        print("TAK")
+                        print(distance)
+                        return
+                    else:
+                        queue.append([next_row, next_col])
+                        board[next_row][next_col] = "1"
+        distance += 1
 
-for i in range(N):
-    for j in range(M):
-        if arr[i][j]==2:
-            bfs(i,j)
+
+    print("NIE")
+
+
+if __name__ == "__main__":
+    n, m = map(int, input().split())
+    board = []
+    for row in range(n):
+        now = list(input())
+        board.append(now)
+        for col in range(m):
+            if now[col] == "2":
+                start_row, start_col = row, col
+
+
+    bfs(start_row, start_col)
+
+
+
